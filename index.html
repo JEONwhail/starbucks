@@ -10,10 +10,22 @@
 
   <!-- 오픈그래프 -->
   <!-- :: 웹페이지가 소셜미디어(패이스북, 카톡 등 )로 공유될 때 활용되는 정보 -->
-  <!-- 구글에  -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Starbucks" />
+  <meta property="og:title" content="Starbucks Coffee Korea" />
+  <meta property="og:description" content="스타벅스는 세계에서 가장 큰 다국적 커피 전문점으로, 64개국에서 총 23,187개의 매점을 운영하고 있습니다." />
+  <meta property="og:image" content="./images/starbucks_seo.jpg" />
+  <meta property="og:url" content="https://starbucks.co.kr" />
+
 
   <!-- 트위터카드 -->
   <!-- :: 웹페이지가 소셜미디어(트위터)로 공유될 때 활용되는 정보 -->
+  <meta property="twitter:card" content="summary" />
+  <meta property="twitter:site" content="Starbucks" />
+  <meta property="twitter:title" content="Starbucks Coffee Korea" />
+  <meta property="twitter:description" content="스타벅스는 세계에서 가장 큰 다국적 커피 전문점으로, 64개국에서 총 23,187개의 매점을 운영하고 있습니다." />
+  <meta property="twitter:image" content="./images/starbucks_seo.jpg" />
+  <meta property="twitter:url" content="https://starbucks.co.kr" />
 
 
   <!-- 파비콘은 프로젝트 폴도의 최상위(root) 경로에 포함시키면 자동 적용
@@ -24,9 +36,63 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
   <link rel="stylesheet" href="./main.css">
 
+  <!-- 폰트링크 연결 -->
+  <!-- 구글 웹톤트 연결 -->
+  <!-- :: 경량화된 오픈 라이선스 폰트, 한글 지원하는지 확인 및 필요한 굵기만 선택 후 연결 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- 구글 머티리얼 아이콘 연결 -->
+  <!-- :: 구글에서 제공하는 머티리얼 스타일의 아이콘, 글자처험 취급가능한 장점! -->
+  <!-- 그 외 fontawesome, bootstrap icon 등등 -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined+filled" rel="stylesheet">   
+  
+  <script defer src="./js/main.js"></script>
+
 </head>
 <body>
+  <!-- HEADER Section start -->
+  <header>
+    <!-- .inner : 내용을 가운데 정렬하는 용도 -->
+    <div class="inner">
+      <a href="./index.html" class="logo">
+        <img src="./images/starbucks_logo.png" alt="starbucks_logo">
+      </a>
 
+      <!-- sub menu(header right top) -->
+      <div class="sub-menu">
+        <!-- menu item -->
+        <ul class="menu">
+          <li>
+            <a href="/signin">Sign In</a>
+          </li>
+          <li>
+            <!-- #을 쓰면 CSS Id 선택자를 이용해 페이지 내 특정 위치로 이동하기 때문에 찾는 Id값이 없으면 페이지 최상단으로 이동, 이게 싫으면 JS 이용 -->
+            <a href="javascript:void(0)">My Starbucks</a>
+          </li>
+          <li>
+            <a href="javascript:void(0)">Customer Service & Ideas</a>
+          </li>
+          <li>
+            <a href="javascript:void(0)">Find a Store</a>
+          </li>
+        </ul>
 
+        <!-- 검색영역 -->
+        <div class="search">
+          <input type="text">
+          <span class="material-icons">
+            search
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
 </body>
 </html>
