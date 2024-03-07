@@ -48,6 +48,10 @@ img{
   cursor: pointer;
   display: block;  /*a태그, span태그 같은 인라인 요소를 버튼으로 사용할 수도 있으니 블록으로 지정*/
   transition: 0.4s;
+
+ /* (참고) 커서 모양 커스텀 */
+ cursor: url("https://blog.kakaocdn.net/dn/BQXpN/btq3qNR67Lg/8tx8tGzkOcr5BuX5dyIaKk/img.png") 58 58, auto;  /*  */
+/
 }
 
 .btn:hover{
@@ -421,6 +425,15 @@ header .badges .badge{
   flex-grow: 1; /*최대힌 늘어나도록 ㅣㅣ정, flex :1;을 써도 같은 결과*/
 }
 
+.notice .inner__left .swiper .swiper-slide{
+  display: flex;
+  align-items: center;
+}
+
+.notice .inner__left .swiper .swiper-slide a{
+  color: #fff;
+}
+
 
 .notice .inner__left .notice-more{
   width: 62px;
@@ -434,9 +447,10 @@ header .badges .badge{
   /* .notice .inner__left .notice-more .material-icons{
     line-height: 62px; */
   /* 아이콘은 글자 관련 속성이 적용됨 */
-
-
 }
+
+
+
 
 .notice .inner__right{
   /* 방법01 : 퍼센트 이용으로 비율너누기  */

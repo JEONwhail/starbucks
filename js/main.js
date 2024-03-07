@@ -93,3 +93,15 @@ fadeEl.forEach(function (fadeEl, index) {
 });
 
 
+// 공지사항 수직 슬라이드 기능
+// new키워드로 Swiper 객체를 생성 => 슬라이드 기능을 생성
+//new Swiper('요소',옵션:{});
+// 첫번째 인수 ; 슬라이드 기능을 적용할 요소의 선택자
+// 두번째 인수: 다양한 옵션을 객체 데이터로 전달(API 페이지 참고)
+new Swiper('.swiper', {
+  // Optional parameters
+  direction: 'vertical', // 수직슬라이드
+  loop: true, //반복재생 엽, 1->2-> 다시 1
+  autoplay:true //자동 재생 여부
+  
+});
