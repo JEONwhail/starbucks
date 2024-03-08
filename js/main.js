@@ -171,4 +171,23 @@ gsap.to('.floating1',1.5,{
   delay : 1, // 얼마나 늦게 애니메이션을 시작할 것이지 지연 시간을 설정
   y: 30, // 수직으로 얼마나 움직일지 설정, transform : translateY(수치); 와 같음
   repeat : -1, //몇번 반복할지 설정
+  yoyo : true, //한번 재생된 애니메이션을 다시 뒤로 재생
+  ease : Power1.easeInOut //타이밍 함수 적용, 느리게-빠르게-느리게
+});
+
+
+gsap.to('.floating2',1.5,{
+  delay : 3, 
+  y: 10, 
+  repeat : -1,
+  yoyo : true, 
+  ease : Power1.easeInOut 
+});
+
+gsap.to('.floating3',1.5,{
+  delay : 2, 
+  y: 50, 
+  repeat : -1,
+  yoyo : true, 
+  ease : Power1.easeInOut 
 });
