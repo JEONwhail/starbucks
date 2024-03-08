@@ -98,10 +98,77 @@ fadeEl.forEach(function (fadeEl, index) {
 //new Swiper('요소',옵션:{});
 // 첫번째 인수 ; 슬라이드 기능을 적용할 요소의 선택자
 // 두번째 인수: 다양한 옵션을 객체 데이터로 전달(API 페이지 참고)
-new Swiper('.swiper', {
+new Swiper('.notice .swiper', {
   // Optional parameters
   direction: 'vertical', // 수직슬라이드
   loop: true, //반복재생 엽, 1->2-> 다시 1
-  autoplay:true //자동 재생 여부
-  
+  autoplay:true, //자동 재생 여부
+});
+
+
+
+new Swiper('.promotion .swiper', {
+  // Optional parameters
+  direction: 'horizontal',
+  loop: true, //반복재생 엽, 1->2-> 다시 1
+  autoplay: {
+    delay:5000
+  },
+  slidesPerView:3,
+  spaceBetween : 10,
+  centeredSlides:true, 
+  pagination : { //페이지 번호 사용
+    el: '.promotion .swiper-pagination', //페이지 번호 요소 선택자
+    clickable : true //사용자의 페이지네이션 요소 제어 가능 여부
+  },
+  navigation: { //슬라이드 이전/다음 버튼 사용
+    nextEl: '.promotion .swiper-button-next',
+    prevEl: '.promotion .swiper-button-prev',
+  },
+});
+
+//프로모션 섹션 토글 기능
+const promotionEl =  document.querySelector('.promotion')
+const promotiontoggleBtn =  document.querySelector('.toggle-promotion')
+const promotiontoggleIcon =  promotiontoggleBtn.querySelector('.material-icons')
+
+
+// Quiz
+// 토글 버튼을 클릭했을 때 아래 기능을 실행
+// 프로모션 요소에 'hide'라는 클래스 값이 있으면 보임 처리!('hide' 클래스를 제거하고 아이콘 모양을 'upload'로 설정)
+// 그렇지 않으면 숨김 처리!('hide' 클래스를 추가하고 아이콘 모양을 'download'로 설정)
+
+promotiontoggleBtn.addEventListener('click', function () {
+  if (promotionEl.classList.contains('hide')) {
+    promotionEl.classList.remove('hide');
+    promotiontoggleIcon.textContent = 'upload';
+  } else {
+    promotionEl.classList.add('hide');
+    promotiontoggleIcon.textContent = 'download';
+
+  }
+} )
+
+// promotiontoggleBtn.addEventListener('click', 
+// function () {
+//   if (promotionEl.classList('hide'))
+//   {
+//     promotionEl.classList.add('hide')
+//   } 
+//   else {
+//     promotionEl.classList.remove('hide')
+//     // promotionEl.style.display = 'none'
+//     // promotiontoggleIcon.style.display = 'inline-flex'
+    
+//   }
+// });
+
+
+// 유튜브 섹션 위에 부유 요소 애니메이션 처리
+// gsap.to(요소, 지속시간,옵션 :{})
+// 옵션참고 : 
+gsap.to('.floating1',1.5,{
+  delay : 1, // 얼마나 늦게 애니메이션을 시작할 것이지 지연 시간을 설정
+  y: 30, // 수직으로 얼마나 움직일지 설정, transform : translateY(수치); 와 같음
+  repeat : -1, //몇번 반복할지 설정
 });
