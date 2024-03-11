@@ -1,3 +1,9 @@
+/* 스크롤 이동을 부드럽게 */
+html{
+  scroll-behavior: smooth;
+}
+
+
 /* COMMON */
 
 body{
@@ -95,6 +101,40 @@ img{
 }
 
 
+/* 스크롤시 애니메이션을 공통 스타일로 추가 */
+/* BACK TO POSITIONS */
+.back-to-position{
+  opacity: 0;
+  transition: 1s;
+}
+
+.back-to-position.to-left{
+/* 오른족에서 왼쪽으로 나타나는 */
+transform: translateX(150px);
+}
+
+.back-to-position.to-right{
+  /* 왼쪽에서 오른쪽 나타나는 */
+  transform: translateX(-150px);
+  }
+/* ↑↑상단↑↑은 초기 상태를 나타냄 */
+
+.show .back-to-position{
+  opacity: 1;
+  transform: translateX(0);
+}
+.show .back-to-position.delay-1{
+  transition-delay: 0.3s;
+}
+.show .back-to-position.delay-2{
+  transition-delay: 0.6s;
+}
+.show .back-to-position.delay-3{
+  transition-delay: 0.9s;
+}
+
+
+
 /* 헤더 */
 header{
   background-color: #f6f5f0;
@@ -152,6 +192,7 @@ header .sub-menu .menu li a:hover{
   color: #000;
 
 }
+
 
 /* 메뉴 아이템 사이 구분선 */
 header .sub-menu .menu li::after{
@@ -449,6 +490,12 @@ header .badges .badge{
   /* 아이콘은 글자 관련 속성이 적용됨 */
 }
 
+.notice .inner__left .notice-more .material-icons{
+  font-size: 30px;
+  color: #fff;
+}
+
+
 .notice .inner__right{
   /* 방법01 : 퍼센트 이용으로 비율너누기  */
   width: 30%;
@@ -580,7 +627,8 @@ background-image: url("./images/promotion_slide_pager_on.png");
   color: #fff;
 }
 
-.swiper-button-next:after, .swiper-button-prev:after{
+.swiper-button-next:after, 
+.swiper-button-prev:after{
   display: none;
 }
 
@@ -754,9 +802,373 @@ background-image: url("./images/promotion_slide_pager_on.png");
 
 }
 
-.youtube .inner .floating3{
+/* .youtube .inner .floating3{
   position: absolute;
-  bottom: -00px;
+  bottom: -200px;
   right: 0px;
+} */
+/* 영역 변경으로 인한 주석처리 */
 
+
+/* SEASON PRODUCT */
+
+.season-product {
+  background-image: url("./images/season_product_bg.jpg");
+}
+.season-product .inner{
+  height: 400px;
+}
+
+.season-product .inner .floating3{
+  position: absolute;
+  top: -200px;
+  right: 0px;
+}
+
+.season-product .text-group{
+  position: absolute;
+  top: 110px;
+  right: 100px;
+}
+
+.season-product .text-group .title{
+  margin-bottom: 10px;
+}
+
+.season-product .text-group .desctiption{
+  margin-bottom: 15px;
+}
+
+
+/* RESERVE COFFEE */
+.reserve-coffee{
+  background-image: url("./images/reserve_bg.jpg");
+}
+
+.reserve-coffee .inner{
+  height: 400px;
+}
+
+.reserve-coffee .reserve-logo{
+  position: absolute;
+  top: 110px;
+  left: 0;
+}
+
+.reserve-coffee .txt-group{
+  position: absolute;
+  top: 124px;
+  left: 208px;
+}
+
+.reserve-coffee .product{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* PICK YOUR FAVORITE */
+
+.pick-your-favorite{
+  background-image: url("./images/favorite_bg.jpg");
+
+  /* 배경 이미지에 시차 효과(Parallax)추가 */
+  background-attachment: fixed;  /*배경 이미지가 뷰포트에 고정*/
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.pick-your-favorite .inner{
+  padding: 110px 0;
+}
+
+.pick-your-favorite .txt-group{
+  /* border:  10px solid red; */
+  display: flex;
+  flex-wrap: wrap;
+  width: 362px;
+  justify-content: flex-end;
+  margin-left: 100px;
+}
+
+.pick-your-favorite .title{
+  margin-bottom: 40px;
+}
+
+.pick-your-favorite .desctiption{
+  margin-bottom: 40px;
+}
+
+/* RESERVE STORE */
+.reserve-store{
+  background-image: url("./images/reserve_store_bg.jpg");
+  /* 배경 이미지에 시차 효과(Parallax)추가 */
+  background-attachment: fixed;  /*배경 이미지가 뷰포트에 고정*/
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.reserve-store .inner{
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reserve-store .inner .medal{
+  width: 334px;
+  height: 334px;
+
+  /* 회전하는 요소의 부모 요소에 원근 거리를 추가 */
+  perspective: 600px;
+}
+
+.reserve-store .medal .front,
+.reserve-store .medal .back {
+  position: absolute;
+  backface-visibility: hidden; /* 회전된 요소의 뒷면을 숨김 */
+  transition: 0.9s;
+}
+
+.reserve-store .medal .front{
+  transform: rotateY(0deg);
+}
+
+.reserve-store .medal:hover .front{
+  transform: rotateY(180deg);
+}
+
+.reserve-store .medal .back{
+  transform: rotateY(-180deg);
+}
+
+.reserve-store .medal:hover .back{
+  transform: rotateY(0deg);
+}
+
+.reserve-store .medal .back .btn{
+  position: absolute;
+  top: 240px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+
+
+
+/* FIND STORE */
+.find-store{
+  background-image: url("./images/find_store_bg.jpg");
+}
+
+.find-store .inner{
+  height: 400px;
+}
+
+.find-store .texture1{
+  position: absolute;
+  top: 0;
+  left: 400px;
+}
+
+.find-store .texture2{
+  position: absolute;
+  bottom: 0;
+  right: 0px;
+}
+
+.find-store .picture1{
+  position: absolute;
+  top: -60px;
+  left: 0px;
+  border-radius: 50%;
+  box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.5);
+
+}
+
+.find-store .picture2{
+  position: absolute;
+  top: 150px;
+  left: 250px;
+  border-radius: 50%;
+  box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.5);
+}
+
+.find-store .text-group{
+  position: absolute;
+  top: 120px;
+  left: 550px;
+}
+
+.find-store .text-group .title{
+  margin-bottom: 20px;
+}
+
+.find-store .text-group .desctiption{
+  margin-bottom: 20px;
+}
+
+/* AWARDS */
+.awards{
+  background-color: #272727;
+}
+
+.awards .inner{
+  padding: 40px 0;
+}
+
+.awards .swiper{
+  width: 100%;
+  height: 40px;
+}
+
+
+.awards .swiper-button-prev,
+.awards .swiper-button-next{
+  width: 42px;
+  height: 42px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  color: #fff;
+  opacity: 0.3;
+  position: absolute;
+  transition: 0.4s;
+}
+
+.awards .swiper-button-prev{
+  left: -100px;
+}
+
+.awards .swiper-button-next{
+ right: -100px;
+}
+
+.awards .swiper-button-prev:hover,
+.awards .swiper-button-next:hover{
+  background-color: #fff;
+  color: #333;
+}
+
+.awards .swiper-button-prev::after,
+.awards .swiper-button-next::after{
+  display: none;
+}
+
+
+/* FOOTER */
+
+footer{
+  background-color: #272727;
+  border-top: 1px solid #333;
+  box-sizing: border-box;
+}
+
+footer .inner{
+  padding: 40px 0 60px;
+}
+
+footer .inner .menu {
+display: flex;
+justify-content: center;
+align-items: center;
+margin-bottom: 30px;
+}
+
+footer .inner .menu li{
+  position:relative
+}
+
+footer .inner .menu li::after{
+  display: block;
+  content:"";  /* 필수 속성 */
+  width: 3px;
+  height: 3px;
+  background-color: #555;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+}
+
+footer .inner .menu li:first-child::after{
+  display: none;
+
+}
+
+footer .inner .menu li a{
+  display: block;
+  padding: 15px;
+  color: #ccc;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+footer .menu li a.green{
+  color: #669900;
+}
+
+footer .btn-group{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  /* column-gap: 10px;  01번 방법*/
+}
+
+footer .btn-group .btn{
+  font-size: 12px;
+  /* 02번 방법margin-right를 주고 마지막 요소의 margin값 제거 */
+  margin-right: 10px;
+}
+
+footer .btn-group .btn:last-child{
+  margin-right: 0;
+}
+
+
+footer .info{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+footer .info span{
+  color: #999;
+  font-size: 12px;
+}
+
+footer .info span + span{
+  margin-left: 20px;
+}
+
+footer .copyright{
+  color: #999;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 12px;
+}
+
+footer .logo{
+  margin: 30px auto 0;
+}
+
+/* SCROLL TO TAP  */
+#to-top{
+  width: 42px;
+  height: 42px;
+  background-color: #333;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 9;  
+  opacity: 0; /* 처음 상테는 투명 */
 }

@@ -40,6 +40,17 @@ searchEl.classList.remove('focused')
 // 스크롤 시 전역 배지(고정 배너) 숨기기
 const badgesEl = document.querySelector('header .badges');
 
+// 페이지 최상단으로 이동
+const toTopEl = document.querySelector('#to-top')
+toTopEl.addEventListener('click',function () {
+  gsap.to(window, 0.6,{
+    scrollTo: 0 
+    //페이지의 0px 지점(최상단)으로 이동,scrollToPlugin을 연결해야 사용 가능한 옵션
+    });  
+})
+
+
+
 // 페이지에 스크롤 이벤트 감지를 추가!!
 // window : 브라우저 창 전체
 window.addEventListener('scroll',function () {
@@ -49,47 +60,60 @@ window.addEventListener('scroll',function () {
   //페이지스크롤 위치가 500px 넘으면 배치 요소를 숨기고,
   
   // 페이지 스크롤 위치가 500px 안넘으면 배치 요소 보이기
-
-//  if (window.scrollY > 500) {
-//   badgesEl.style.display = 'none';
-//  } else {
-//   badgesEl.style.display = 'block';
-//  };
-
   if (window.scrollY < 500) {
     badgesEl.style.opacity = 1;
     badgesEl.style.visibilty = "visible";
+
+    gsap.to(toTopEl,0.6,{
+      opacity :0,
+      x:100
+  });
+
+    
   } else {
     badgesEl.style.opacity = 0;
     badgesEl.style.visibilty = "hidden";
-  };
 
+    gsap.to(toTopEl, 0.6, {
+      opacity: 1,
+      x:0
+    });
+  
+  
+  
   //gsap.to(요소, 지속시간, 옵션(데이터 타입은 객체 = {}) :메소드 CSS 속성을 통해 애니메이션 처리 )
   // if (window.scrollY > 500) {
-  //   gsap.to(badgeEl, 0.6, {
-  //     opasity : 0,
-  //     display : 'none'
-  //   });
-  // } else {
-  //   gsap.to(badgeEl, 0.6, {
-  //     opasity : 1,
-  //     display : 'block'
-  //   }); 
-  // }
-});
-
-
-// 순차적으로 VISUAL 섹션 내 요소 보이기
-// 나타날 요소(.fade-in)들을 찾기
-const fadeEl =  document.querySelectorAll('.visual .fade-In');
-fadeEl.forEach(function (fadeEl, index) {
-  console.log(fadeEl, index);
-  //gsap.to(요소, 지속시간,옵션:{});
-  gsap.to(fadeEl,1,{
+    //   gsap.to(badgeEl, 0.6, {
+      //     opasity : 0,
+      //     display : 'none'
+      //   });
+      // } else {
+        //   gsap.to(badgeEl, 0.6, {
+          //     opasity : 1,
+          //     display : 'block'
+          //   }); 
+          // }
+        }});
+        
+        
+        // 순차적으로 VISUAL 섹션 내 요소 보이기
+        // 나타날 요소(.fade-in)들을 찾기
+        const fadeEl =  document.querySelectorAll('.visual .fade-In');
+        fadeEl.forEach(function (fadeEl, index) {
+          console.log(fadeEl, index);
+          //gsap.to(요소, 지속시간,옵션:{});
+          gsap.to(fadeEl,1,{
     opacity :1,
     delay :  (index + 1) * 0.7
     //0.7s, 1.4s, 2.1s, 2.8s
   });
+
+      //상단으로 이동 버튼 숨기기!
+      gsap.to(toTopEl,0.6,{
+        opacity :0,
+        x:100 //x축 100px지점으로 이동
+      });
+
 });
 
 
@@ -191,3 +215,55 @@ gsap.to('.floating3',1.5,{
   yoyo : true, 
   ease : Power1.easeInOut 
 });
+
+// ScrollMagic 사용
+// 그 외 scrollreveal도 있음!!
+// 
+const spyEls =  document.querySelectorAll('section.scroll-spy');
+               //현재꺼내온 변수, 인덱스
+               // 이름은 내가 짓는 거임 하지만 직관적으로 지어야함
+               //xxxxx,xxxx라고 해도 댐!
+spyEls.forEach(function (spyEl) {
+  new ScrollMagic.Scene({ //감시할 장면(Scene) 추가 및 옵션 지정 가능
+    triggerElement : spyEl, //보여질 여부를 감시할 요소를 지정
+    triggerHook : 0.8 //화면의 80%지점에서 보여짐 여부 감시 (0~1사이 지정)  
+  })
+  .setClassToggle (spyEl, 'show') //요소가 화면에 보이면 show클래스 추가
+  .addTo(new ScrollMagic.Controller()); //컨트롤러에 장면을 할당(필수!!)
+  // 라이브러리에서 지정한 문법으로 깊게 이해X
+  
+});
+
+
+
+new Swiper('.awards .swiper', {
+  // Optional parameters
+  // direction: 'horizontal',
+  loop: true, //반복재생 엽, 1->2-> 다시 1
+  autoplay: {
+    delay:1000
+  },
+  slidesPerView:5,
+  spaceBetween : 30,
+  // centeredSlides:true, 
+  pagination : { //페이지 번호 사용
+    el: '.awards .swiper-pagination', //페이지 번호 요소 선택자
+    clickable : true //사용자의 페이지네이션 요소 제어 가능 여부
+  },
+  navigation: { //슬라이드 이전/다음 버튼 사용
+    nextEl: '.awards .swiper-button-next',
+    prevEl: '.awards .swiper-button-prev',
+  },
+});
+
+
+//  현재 연도 표사
+// 날짜 정보를 가진 JS DATA 객체를 활용(JS 기본 제공 객체 : 여러 데이터들의 묶음)
+
+
+const yearEL = document.querySelector('.this-year');
+yearEL.textContent = new Date().getFullYear();
+
+ //현재 연도의 정보가 숫자 데이터로 반황됨
+console.log(new Date().getFullYear());
+
